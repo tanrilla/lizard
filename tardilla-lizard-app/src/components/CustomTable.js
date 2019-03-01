@@ -103,17 +103,27 @@ let EnhancedTableToolbar = props => {
 
 class CustomTable extends Component{
 
+    state = {
+      rows: []
+    };
+
     constructor(props){
       super(props);
-      this.rows = props.data;
-      this.cells = props.header;
       
+      this.cells = props.header;      
+    }
+
+    componentWillReceiveProps(nextProps) {
+      let rows = nextProps.data;
+      this.setState({
+        'rows': rows
+      });
     }
       
     render() {
 
         const { classes, title, addOnClick } = this.props;
-        console.log(this.rows);
+        console.log(this.state.rows);
         return (
             <Paper className={classes.root}>
               <EnhancedTableToolbar title={title} addOnClick={addOnClick} numSelected={0}/>
@@ -126,7 +136,7 @@ class CustomTable extends Component{
                   </TableRow>
                 </TableHead>
                 <TableBody>                
-                  {this.rows.map(row => (
+                  {this.state.rows.map(row => (
                     <TableRow key={row.id}>
                       {this.cells.map((cell, index) => (
                       <TableCell key={index} align="left">{row[cell.keyName]}</TableCell>
