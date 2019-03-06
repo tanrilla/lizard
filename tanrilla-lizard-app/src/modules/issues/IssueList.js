@@ -6,12 +6,12 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+//import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 
-import { getIssues } from '../../actions/IssueAction';
+import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue } from '../../actions/IssueAction';
 
 
 
@@ -23,20 +23,31 @@ class IssueList extends Component {
 
     state = {
         openModal: false,
+        id: null,
         rows: [],
+        name: '',
+        description: '',
+        editMode: false
     };
 
     constructor(props){
         super(props); 
         this.cells =[
-            {keyName: 'email', name: 'Name'}
-          ];
-
-        
+            {keyName: 'name', name: 'Name'}
+          ];        
       }
     
     componentWillReceiveProps (nextProps) {
         this.setState({rows: nextProps.issueList});
+        if(nextProps.issue !== null){
+            this.setState({ 
+                id: nextProps.issue.id,
+                name: nextProps.issue.name,
+                description: nextProps.issue.description,
+                openModal: true 
+            });
+        }
+        
     }
 
     componentDidMount () {
@@ -44,14 +55,57 @@ class IssueList extends Component {
     }
 
     handleClickOpen = () => {
-        this.setState({ openModal: true });
+        this.setState({ 
+            editMode: false,
+            openModal: true 
+        });
     };
 
     handleClose = () => {
-        this.setState({ openModal: false });
+        this.clearForm();
     };
 
+    handleSave = () => {
+        if(this.state.editMode === true){
+            this.props.updateIssue({
+                id: this.state.id,
+                name: this.state.name,
+                description: this.state.description,
+                userId: 1
+            });
+        }else{
+            this.props.saveIssue({
+                name: this.state.name,
+                description: this.state.description,
+                userId: 1
+            });
+        }
+
+        this.clearForm();
+    };
+
+    deleteOnClick = (id) =>{
+        this.props.deleteIssue(id);
+    };
+
+    editOnClick = (id) =>{
+        this.setState({editMode: true});
+        this.props.getIssue(1, id);        
+    };
+
+    clearForm = () => {
+        this.setState({ 
+            id: null,
+            name: '',
+            description: '',
+            openModal: false 
+        });
+    }
+
     // Components
+    handleChange = (name) => event => {
+        this.setState({ [name]: event.target.value });
+    };
 
     newPopup = () => {
         return (
@@ -67,13 +121,14 @@ class IssueList extends Component {
                 {"New Issue"}
             </DialogTitle>
             <DialogContent>
-                <DialogContentText id="alert-dialog-slide-description">
                 
                 <TextField
-                    autoFocus
+                    
                     margin="dense"
                     id="name"
                     label="Name"
+                    value={this.state.name}
+                    onChange={this.handleChange('name')}
                     fullWidth
                     />
         
@@ -81,16 +136,17 @@ class IssueList extends Component {
                     margin="dense"
                     id="description"
                     label="Description"
+                    value={this.state.description}
+                    onChange={this.handleChange('description')}
                     fullWidth
                     />
 
-                </DialogContentText>
             </DialogContent>
             <DialogActions>
                 <Button onClick={this.handleClose} color="primary">
                     CANCEL
                 </Button>
-                <Button onClick={this.handleClose} color="primary">
+                <Button onClick={this.handleSave} color="primary">
                     SAVE
                 </Button>
             </DialogActions>
@@ -107,6 +163,8 @@ class IssueList extends Component {
                     data={this.state.rows} 
                     header={this.cells} 
                     addOnClick={this.handleClickOpen} 
+                    deleteOnClick={this.deleteOnClick}
+                    editOnClick={this.editOnClick}
                     title={"Issue List"}/>
                 {this.newPopup()}
             </div>
@@ -117,8 +175,17 @@ class IssueList extends Component {
 
 const mapStateToProps = state => {
     return {
-        issueList: state.issue.issueList
+        issueList: state.issue.issueList,
+        issue: state.issue.issue
     };
 };
 
-export default connect(mapStateToProps,{getIssues})(IssueList);
+const actions = {
+    getIssues, 
+    saveIssue, 
+    deleteIssue, 
+    getIssue, 
+    updateIssue
+};
+
+export default connect(mapStateToProps,actions)(IssueList);

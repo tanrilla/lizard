@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -122,7 +123,7 @@ class CustomTable extends Component{
       
     render() {
 
-        const { classes, title, addOnClick } = this.props;
+        const { classes, title, addOnClick, deleteOnClick, editOnClick } = this.props;
         return (
             <Paper className={classes.root}>
               <EnhancedTableToolbar title={title} addOnClick={addOnClick} numSelected={0}/>
@@ -131,7 +132,8 @@ class CustomTable extends Component{
                   <TableRow>
                     {this.cells.map((cell, index) => (
                       <TableCell key={index} align="left">{cell.name}</TableCell>
-                      ))}
+                    ))}
+                    <TableCell align="right">{''}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>                
@@ -140,6 +142,14 @@ class CustomTable extends Component{
                       {this.cells.map((cell, index) => (
                       <TableCell key={index} align="left">{row[cell.keyName]}</TableCell>
                       ))}
+                      <TableCell align="right">
+                             <IconButton aria-label="Edit">
+                               <EditIcon  onClick={event => editOnClick(row.id)}/>
+                           </IconButton>
+                           <IconButton aria-label="Delete" onClick={event => deleteOnClick(row.id)}>
+                               <DeleteIcon />
+                           </IconButton>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
