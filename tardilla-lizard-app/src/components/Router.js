@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route} from 'react-router-dom';
 import IssueList from './../modules/issues/IssueList';
-//import Layout from './Layout';   
 
 const Router = () => {
 

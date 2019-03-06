@@ -123,7 +123,6 @@ class CustomTable extends Component{
     render() {
 
         const { classes, title, addOnClick } = this.props;
-        console.log(this.state.rows);
         return (
             <Paper className={classes.root}>
               <EnhancedTableToolbar title={title} addOnClick={addOnClick} numSelected={0}/>
