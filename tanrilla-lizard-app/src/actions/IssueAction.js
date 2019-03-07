@@ -57,3 +57,7 @@ export const updateIssue = (issue) => dispatch => {
 
 };
 
+
+export const clearState = () => dispatch => {
+    dispatch({type: 'GET_ISSUE', payload: null});
+};

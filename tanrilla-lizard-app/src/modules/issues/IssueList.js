@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 
-import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue } from '../../actions/IssueAction';
+import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue, clearState } from '../../actions/IssueAction';
 
 
 
@@ -94,6 +94,7 @@ class IssueList extends Component {
     };
 
     clearForm = () => {
+        this.props.clearState();
         this.setState({ 
             id: null,
             name: '',
@@ -185,7 +186,8 @@ const actions = {
     saveIssue, 
     deleteIssue, 
     getIssue, 
-    updateIssue
+    updateIssue,
+    clearState
 };
 
 export default connect(mapStateToProps,actions)(IssueList);
