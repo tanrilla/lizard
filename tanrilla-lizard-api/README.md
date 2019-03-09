@@ -22,7 +22,7 @@ response:
     }
 ]
 
-2. GET: http://localhost:9080/lizard/api/v1/issue?id=12
+2. http://localhost:9080/lizard/api/v1/issue/12
 
 response:
 {
