@@ -1,9 +1,7 @@
 package com.tanrilla.lizard.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Issue {
@@ -11,43 +9,60 @@ public class Issue {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	private String name;
-
+	private String summary;
 	private String description;
-
-	private Long userId;
+	@Column(name = "due_date")
+	private Date dueDate;
+	@Column(name = "created_date")
+	private Date createdDate;
+	@Column(name = "modified_date")
+	private Date modifiedDate;
 
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getSummary() {
+		return summary;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Long getUserId() {
-		return this.userId;
+	public Date getDueDate() {
+		return dueDate;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
 	}
 
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
 }

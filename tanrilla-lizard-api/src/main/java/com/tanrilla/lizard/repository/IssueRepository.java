@@ -1,15 +1,13 @@
 package com.tanrilla.lizard.repository;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.tanrilla.lizard.model.Issue;
 
-public interface IssueRepository extends CrudRepository<Issue, Long> {
+import java.util.Optional;
 
-	List<Issue> findAllByUserId(Long id);
+public interface IssueRepository extends JpaRepository<Issue, Long> {
 
-	Issue findByIdAndUserId(Long id, Long userId);
+	Optional<Issue> findById(Long id);
 
 }

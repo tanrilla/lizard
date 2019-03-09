@@ -1,6 +1,7 @@
 package com.tanrilla.lizard.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,44 +15,24 @@ public class IssueServiceImpl implements IssueService {
 	@Autowired
 	private IssueRepository repository;
 
-	/* (non-Javadoc)
-	 * @see com.tanrilla.lizard.service.e#create(com.tanrilla.lizard.model.Issue)
-	 */
 	@Override
-	public void create(Issue objToSave){
-		repository.save(objToSave);
+	public Issue create(Issue issue){
+		return repository.save(issue);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tanrilla.lizard.service.e#update(com.tanrilla.lizard.model.Issue)
-	 */
 	@Override
-	public void update(Issue objToUpdate){
-		repository.save(objToUpdate);
+	public Issue update(Issue issue){
+		return repository.save(issue);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tanrilla.lizard.service.e#delete(java.lang.Long)
-	 */
 	@Override
-	public void delete(Long id){
-		repository.deleteById(id);
+	public Optional<Issue> findById(Long id) {
+		return repository.findById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tanrilla.lizard.service.e#findByIdAndUserId(java.lang.Long, java.lang.Long)
-	 */
 	@Override
-	public Issue findByIdAndUserId(Long id, Long userId){
-		return repository.findByIdAndUserId(id, userId);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.tanrilla.lizard.service.e#findAllByUserId(java.lang.Long)
-	 */
-	@Override
-	public List<Issue> findAllByUserId(Long id){
-		return repository.findAllByUserId(id);
+	public List<Issue> findAll(){
+		return repository.findAll();
 	}
 
 }

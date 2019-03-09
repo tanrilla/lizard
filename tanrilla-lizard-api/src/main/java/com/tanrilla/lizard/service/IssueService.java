@@ -1,19 +1,18 @@
 package com.tanrilla.lizard.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.tanrilla.lizard.model.Issue;
 
 public interface IssueService {
 
-	void create(Issue objToSave);
+	Issue create(Issue issue);
 
-	void update(Issue objToUpdate);
+	Issue update(Issue issue);
 
-	void delete(Long id);
+	Optional<Issue> findById(Long id);
 
-	Issue findByIdAndUserId(Long id, Long userId);
-
-	List<Issue> findAllByUserId(Long id);
+	List<Issue> findAll();
 
 }
