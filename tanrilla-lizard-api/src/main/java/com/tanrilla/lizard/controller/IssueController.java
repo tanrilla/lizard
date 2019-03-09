@@ -22,9 +22,9 @@ public class IssueController {
 	public List<Issue> getAllIssues(){
 		return service.findAll();
 	}
-	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public Optional<Issue> getIssue(@RequestParam Long id){
+
+	@GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Optional<Issue> getIssue(@PathVariable Long id){
 		return service.findById(id);
 	}
 	
