@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import CustomTable from '../../components/CustomTable';
+import IssueTable from '../../components/IssueTable';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -30,15 +30,6 @@ class IssueList extends Component {
         editMode: false
     };
 
-    constructor(props){
-        super(props); 
-        this.cells =[
-            {keyName: 'id', name: 'Id'},
-            {keyName: 'summary', name: 'Summary'},
-            {keyName: 'dueDate', name: 'Due Date'}
-          ];        
-      }
-    
     componentWillReceiveProps (nextProps) {
         this.setState({rows: nextProps.issueList});
         if(nextProps.issue !== null){
@@ -162,9 +153,8 @@ class IssueList extends Component {
         console.log(this.state);
         return(
             <div> 
-                <CustomTable 
+                <IssueTable 
                     data={this.state.rows} 
-                    header={this.cells} 
                     addOnClick={this.handleClickOpen} 
                     deleteOnClick={this.deleteOnClick}
                     editOnClick={this.editOnClick}

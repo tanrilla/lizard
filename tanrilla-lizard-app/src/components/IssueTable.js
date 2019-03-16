@@ -108,12 +108,6 @@ class CustomTable extends Component{
       rows: []
     };
 
-    constructor(props){
-      super(props);
-      
-      this.cells = props.header;      
-    }
-
     componentWillReceiveProps(nextProps) {
       let rows = nextProps.data;
       this.setState({
@@ -130,21 +124,29 @@ class CustomTable extends Component{
               <Table className={classes.table}>
                 <TableHead>
                   <TableRow>
-                    {this.cells.map((cell, index) => (
-                      <TableCell key={index} align="left">{cell.name}</TableCell>
-                    ))}
+                    <TableCell align="left">Id</TableCell>
+                    <TableCell align="left">Summary</TableCell>
+                    <TableCell align="left">Project</TableCell>
+                    <TableCell align="left">Priority</TableCell>
+                    <TableCell align="left">Status</TableCell>
+                    <TableCell align="left">Type</TableCell>
+                    <TableCell align="left">Assignee</TableCell>
                     <TableCell align="right">{''}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>                
                   {this.state.rows.map(row => (
                     <TableRow key={row.id}>
-                      {this.cells.map((cell, index) => (
-                      <TableCell key={index} align="left">{row[cell.keyName]}</TableCell>
-                      ))}
+                      <TableCell align="left">{row.id}</TableCell>
+                      <TableCell align="left">{row.summary}</TableCell>
+                      <TableCell align="left">{row.project.name}</TableCell>
+                      <TableCell align="left">{row.priority.name}</TableCell>
+                      <TableCell align="left">{row.status.name}</TableCell>
+                      <TableCell align="left">{row.type.name}</TableCell>
+                      <TableCell align="left">{row.assignee.firstName} {row.assignee.lastName}</TableCell>
                       <TableCell align="right">
-                             <IconButton aria-label="Edit">
-                               <EditIcon  onClick={event => editOnClick(row.id)}/>
+                           <IconButton aria-label="Edit" onClick={event => editOnClick(row.id)}>
+                               <EditIcon />
                            </IconButton>
                            <IconButton aria-label="Delete" onClick={event => deleteOnClick(row.id)}>
                                <DeleteIcon />
