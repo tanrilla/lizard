@@ -20,7 +20,7 @@ import Router from './Router';
 class Layout extends Component {
 
     state = {
-        open: true,
+        open: false,
     };
     
     handleDrawerOpen = () => {
@@ -60,7 +60,7 @@ class Layout extends Component {
                       noWrap
                       className={classes.title}
                     >
-                        Lizard IM
+                        Lizard
                     </Typography>
                 </Toolbar>
             </AppBar>

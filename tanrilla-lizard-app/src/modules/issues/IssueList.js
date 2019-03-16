@@ -33,7 +33,9 @@ class IssueList extends Component {
     constructor(props){
         super(props); 
         this.cells =[
-            {keyName: 'name', name: 'Name'}
+            {keyName: 'id', name: 'Id'},
+            {keyName: 'summary', name: 'Summary'},
+            {keyName: 'dueDate', name: 'Due Date'}
           ];        
       }
     
@@ -157,9 +159,9 @@ class IssueList extends Component {
     };
 
     render(){
+        console.log(this.state);
         return(
             <div> 
-
                 <CustomTable 
                     data={this.state.rows} 
                     header={this.cells} 
