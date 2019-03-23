@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import Layout from './Layout';
-import {BrowserRouter} from 'react-router-dom';
-
+import Main from './Main';
+import 'semantic-ui-css/semantic.min.css';
+import MenuHeader from './MenuHeader';
 
 class App extends Component {
 
   render() {
     return (
       <div>
-        <BrowserRouter>
-          <Layout />
-        </BrowserRouter>
+          <MenuHeader />
+          <Main />
       </div>
     );
   }

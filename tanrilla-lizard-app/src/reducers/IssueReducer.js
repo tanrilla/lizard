@@ -1,7 +1,3 @@
-
-import  assign from  'object-assign';
- 
-
 const initialState = {
     'issueList': [],
     'issue': null,
@@ -11,10 +7,10 @@ const initialState = {
     
     switch (action.type) {
         case 'GET_ISSUES': {
-            return assign({}, state, {'issueList': action.payload});
+            return { ...state, issueList: action.payload };
         }
         case 'GET_ISSUE': {
-            return assign({}, state, {'issue': action.payload});
+            return { ...state, issue: action.payload };
         }
         default:
             return state;

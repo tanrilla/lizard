@@ -1,4 +1,4 @@
-import apiUtil from '../commons/APIUtil';
+import apiUtil from '../apis/lizardApi';
 
 export const getIssues = () => async dispatch => {
     const reponse = await apiUtil.get("/issue/getAll");
