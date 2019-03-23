@@ -1,7 +1,7 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import Home from '../modules/Home'
-import IssueList from '../modules/IssueList'
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import IssueList from './IssueList';
 
 const Main = () => (
   <main>
