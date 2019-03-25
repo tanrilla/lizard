@@ -1,8 +1,7 @@
 import React from 'react';
-import { Table, Icon, Dropdown } from 'semantic-ui-react';
+import { Table, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue, clearState } from '../actions/IssueAction';
-import { runInThisContext } from 'vm';
 
 class IssueList extends React.Component {
 

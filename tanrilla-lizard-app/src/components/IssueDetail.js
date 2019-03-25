@@ -74,7 +74,7 @@ class IssueDetail extends React.Component {
 
     issueLabels () {
 
-        if(this.state.labels.length == 0){
+        if(this.state.labels.length === 0){
             return 'None';
         }
 
@@ -121,7 +121,7 @@ class IssueDetail extends React.Component {
                         <Table.Cell width={2}>Assignee</Table.Cell>
                         <Table.Cell>
                             <Label as='a' image>
-                                <img src='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
+                                <img src='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' alt=""/>
                                 {this.state.assignee}
                                 <Icon name='delete' />
                             </Label>
