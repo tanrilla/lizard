@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import com.tanrilla.lizard.model.Issue;
 import com.tanrilla.lizard.service.IssueService;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(path = "/issue")
-public class IssueController {
+public class IssueController extends AbstractController {
 
 	@Autowired
 	private IssueService service;

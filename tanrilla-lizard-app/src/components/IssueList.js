@@ -1,7 +1,8 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Icon, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue, clearState } from '../actions/IssueAction';
+import { runInThisContext } from 'vm';
 
 class IssueList extends React.Component {
 
@@ -9,17 +10,34 @@ class IssueList extends React.Component {
     this.props.getIssues();
   }
 
+  selectRowAction = (id) => {
+    this.props.clearState();
+    this.props.history.push(`/issue-detail/${id}`);
+  };
+
+  renderDropdownOptions (id) { 
+    return (
+    <Dropdown>
+      <Dropdown.Menu>
+        <Dropdown.Item text='Show' description='' onClick={event => this.selectRowAction(id)}/>
+        <Dropdown.Item text='Edit' />        
+        <Dropdown.Item icon='trash' text='Delete' />
+      </Dropdown.Menu>
+    </Dropdown>);
+  }
+
   renderList() {
     return this.props.issueList.map(issue => {
       return (
-        <Table.Row key={issue.id}>
+        <Table.Row key={issue.id} onClick={event => this.selectRowAction(issue.id)} >
+          <Table.Cell>{this.renderDropdownOptions(issue.id)}</Table.Cell>
           <Table.Cell>{issue.id}</Table.Cell>
           <Table.Cell>{issue.summary}</Table.Cell>
           <Table.Cell>{issue.status.name}</Table.Cell>
           <Table.Cell>{issue.type.name}</Table.Cell>
-          <Table.Cell>{issue.project.name}</Table.Cell>
+          <Table.Cell>{issue.project === null ? '' : issue.project.name}</Table.Cell>
           <Table.Cell>{issue.dueDate}</Table.Cell>
-          <Table.Cell>{issue.assignee.firstName}</Table.Cell>
+          <Table.Cell>{issue.assignee === null ? 'Unassigned' : issue.assignee.firstName}</Table.Cell>          
         </Table.Row>
       );
     });
@@ -28,9 +46,10 @@ class IssueList extends React.Component {
   render() {
     return (
         <div>
-          <Table>
+          <Table selectable>
             <Table.Header>
               <Table.Row>
+                <Table.HeaderCell></Table.HeaderCell>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Summary</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
