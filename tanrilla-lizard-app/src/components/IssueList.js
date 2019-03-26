@@ -7,6 +7,7 @@ class IssueList extends React.Component {
 
   componentDidMount () {
     this.props.getIssues();
+    document.title = "Issues";
   }
 
   selectRowAction = (id) => {

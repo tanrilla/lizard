@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Dropdown, Menu, Modal } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import CreateIssue from './CreateIssue';
 
 class MenuHeader extends React.Component {
 
@@ -21,19 +22,8 @@ class MenuHeader extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
 
-        <Menu.Item>
-          <Modal trigger={<Button primary>Create</Button>}>
-            <Modal.Header>Create issue</Modal.Header>
-            <Modal.Content scrolling>
-              <Modal.Description>
-                <p>Body of issue creation modal...</p>
-              </Modal.Description>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button primary>Create</Button>
-            </Modal.Actions>
-          </Modal>
-        </Menu.Item>
+        <CreateIssue />
+
       </Menu>
 
     );
