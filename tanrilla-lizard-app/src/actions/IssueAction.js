@@ -61,3 +61,34 @@ export const updateIssue = (issue) => dispatch => {
 export const clearState = () => dispatch => {
     dispatch({type: 'GET_ISSUE', payload: null});
 };
+
+export const saveIssueComment = (comment, issueId) => dispatch => {
+    var config = {
+        headers: {'Content-Type': 'application/json'}
+      };
+    apiUtil.post("/comment", comment, config).then(async () => {
+        const reponse = await apiUtil.get(`/comment/${issueId}`);
+        dispatch({
+            type: 'GET_COMMENTS',
+            payload: reponse.data
+        });
+    });
+
+};
+
+export const getIssueComments = (issueId) => async dispatch => {
+    const reponse = await apiUtil.get(`/comment/${issueId}`);
+    dispatch({
+        type: 'GET_COMMENTS',
+        payload: reponse.data
+    });
+};
+
+export const updateIssueFields = (issueId, issue) =>async dispatch => {
+    var config = {
+            headers: {'Content-Type': 'application/json'}
+        };
+    const reponse = await apiUtil.patch(`/issue/${issueId}`, issue, config);
+    dispatch({type: 'GET_ISSUE', payload: reponse.data});
+
+};

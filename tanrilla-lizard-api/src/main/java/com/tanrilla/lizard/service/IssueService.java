@@ -14,5 +14,7 @@ public interface IssueService {
 	Optional<Issue> findById(Long id);
 
 	List<Issue> findAll();
+	
+	Issue updateByField(Long id, Issue issue);
 
 }
