@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import CreateIssue from './CreateIssue';
 
 class MenuHeader extends React.Component {
 
@@ -21,9 +22,8 @@ class MenuHeader extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
 
-        <Menu.Item>
-          <Button primary>Create</Button>
-        </Menu.Item>
+        <CreateIssue />
+
       </Menu>
 
     );

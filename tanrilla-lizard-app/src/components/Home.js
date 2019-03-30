@@ -3,6 +3,10 @@ import { Container, Header } from 'semantic-ui-react';
 
 class Home extends React.Component {
 
+  componentDidMount() {
+    document.title = "Home";
+  }
+
   render() {
     return (
         <div>
