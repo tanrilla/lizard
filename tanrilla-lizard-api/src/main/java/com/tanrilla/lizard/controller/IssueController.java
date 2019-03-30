@@ -37,4 +37,9 @@ public class IssueController extends AbstractController {
 		return service.update(issue);
 	}
 	
+	@PatchMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Issue updateIssueByField(@RequestBody Issue issue, @PathVariable Long id){
+		return service.updateByField(id, issue);
+	}
+	
 }
