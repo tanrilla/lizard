@@ -1,64 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { saveIssue } from '../actions/IssueAction';
+import { getProjectList, getTypeList, getPriorityList, getUsers } from '../actions/CommonAction';
 import { Button, Modal, Menu, Form } from 'semantic-ui-react';
 
 class CreateIssue extends React.Component {
 
     state = {
-      projects: [
-        {
-          key: '1',
-          text: 'Lizard',
-          value: '1'
-        }
-      ],
-      types: [
-        {
-          key: '1',
-          text: 'Defect',
-          value: '1'
-        },
-        {
-          key: '2',
-          text: 'New Feature',
-          value: '2'
-        },
-        {
-          key: '3',
-          text: 'Improvement',
-          value: '3'
-        }
-      ],
-      priorities: [
-        {
-          key: '1',
-          text: 'P1',
-          value: '1'
-        },
-        {
-          key: '2',
-          text: 'P2',
-          value: '2'
-        },
-        {
-          key: '3',
-          text: 'P3',
-          value: '3'
-        }
-      ],
-      users: [
-        {
-          key: '1',
-          text: 'Cesar K',
-          value: '1'
-        },
-        {
-          key: '2',
-          text: 'Ricardo F',
-          value: '2'
-        }
-      ],
+      projects: [],
+      types: [],
+      priorities: [],
+      users: [],
       projectId: null,
       typeId: null,
       summary: '',
@@ -69,6 +21,66 @@ class CreateIssue extends React.Component {
       statusId: 1
     }
     
+    componentDidMount() {
+      this.props.getTypeList();
+      this.props.getProjectList();
+      this.props.getPriorityList();
+      this.props.getUsers();
+    }
+/*
+    componentWillReceiveProps(nextProps) {
+      if(nextProps.projectList){
+        this.setState({ projects: nextProps.projectList.map(element => ({
+          key: element.id,
+          text: element.name,
+          value: element.id
+        }))});
+      }
+      if(nextProps.typeList){
+        this.setState({ types: nextProps.typeList.map(element => ({
+          key: element.id,
+          text: element.name,
+          value: element.id
+        }))});
+      }
+    }
+*/
+
+    static getDerivedStateFromProps(nextProps, prevState){
+      let newState = {};
+      if(nextProps.projectList){
+        newState.projects = nextProps.projectList.map(element => ({
+          key: element.id,
+          text: element.name,
+          value: element.id
+        }));
+      } 
+      if(nextProps.typeList){
+        newState.types = nextProps.typeList.map(element => ({
+          key: element.id,
+          text: element.name,
+          value: element.id
+        }));
+      }
+      if(nextProps.priorityList){
+        newState.priorities = nextProps.priorityList.map(element => ({
+          key: element.id,
+          text: element.name,
+          value: element.id
+        }));
+      }
+
+      if(nextProps.userList){
+        newState.users = nextProps.userList.map(element => ({
+          key: element.id,
+          text: `${element.firstName} ${element.lastName}`,
+          value: element.id
+        }));
+      }
+
+      return newState;
+    }
+
     /** Actions */
     saveIssue () {
       let issue = {
@@ -129,7 +141,7 @@ class CreateIssue extends React.Component {
         return (
             <div>
                 <Menu.Item>
-                    <Modal trigger={<Button color="green">Create</Button>}>
+                    <Modal trigger={<Button primary>Create</Button>}>
                         <Modal.Header>Create issue</Modal.Header>
                         <Modal.Content scrolling>
                             <Modal.Description>
@@ -154,8 +166,21 @@ class CreateIssue extends React.Component {
     }
 }
 
-const actions = {
-  saveIssue
+const mapStateToProps = state => {
+  return {
+      projectList: state.project.projectList,
+      typeList: state.type.typeList,
+      priorityList: state.priority.priorityList,
+      userList: state.user.users
+  };
 };
 
-export default connect(null,actions)(CreateIssue);
+const actions = {
+  saveIssue,
+  getProjectList,
+  getTypeList,
+  getPriorityList,
+  getUsers
+};
+
+export default connect(mapStateToProps,actions)(CreateIssue);
