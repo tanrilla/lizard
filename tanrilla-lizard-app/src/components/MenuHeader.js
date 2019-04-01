@@ -11,6 +11,10 @@ class MenuHeader extends React.Component {
   render() {
     return (
       <Menu size='mini'>
+        <Menu.Item>
+          <img src='/lizard.png' />
+        </Menu.Item>
+
         <Menu.Item header
           content='LIZARD'
           as={Link} to='/'
@@ -22,8 +26,17 @@ class MenuHeader extends React.Component {
         </Dropdown>
 
         <Menu.Item>
-          <Button primary>Create</Button>
+          <Button color="green">Create</Button>
         </Menu.Item>
+
+        <Menu.Menu position='right'>
+            <Dropdown item text={window.currentUser.firstName + ' ' + window.currentUser.lastName} image>
+              <Dropdown.Menu>
+                <Dropdown.Item>Account</Dropdown.Item>
+                <Dropdown.Item>Sign Out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+        </Menu.Menu>
       </Menu>
 
     );

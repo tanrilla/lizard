@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import Main from './Main';
 import 'semantic-ui-css/semantic.min.css';
-import MenuHeader from './MenuHeader';
+import Login from './auth/Login';
 
 class App extends Component {
 
   render() {
     return (
       <div>
-          <MenuHeader />
-          <Main />
+          <Login />
       </div>
     );
   }

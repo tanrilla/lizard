@@ -49,7 +49,7 @@ public class IssueServiceImpl implements IssueService {
 				issuePrev.setStatus(statusService.getStatusById(issue.getStatus().getId()));
 			}
 			if (null != issue.getAssignee() && null != issue.getAssignee().getId()) {
-				issuePrev.setAssignee(userService.getUserById(issue.getAssignee().getId()));
+				issuePrev.setAssignee(userService.getUserById(issue.getAssignee().getId()).get());
 			}			
 		}
 		
