@@ -5,13 +5,15 @@ import CreateIssue from './CreateIssue';
 
 class MenuHeader extends React.Component {
 
-  state = {};
-
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
     return (
       <Menu size='mini'>
+        <Menu.Item>
+          <img src='/lizard.png' alt="Lizard"/>
+        </Menu.Item>
+
         <Menu.Item header
           content='LIZARD'
           as={Link} to='/'
@@ -23,6 +25,15 @@ class MenuHeader extends React.Component {
         </Dropdown>
 
         <CreateIssue />
+
+        <Menu.Menu position='right'>
+            <Dropdown item text={window.currentUser.firstName + ' ' + window.currentUser.lastName} image>
+              <Dropdown.Menu>
+                <Dropdown.Item>Account</Dropdown.Item>
+                <Dropdown.Item>Sign Out</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+        </Menu.Menu>
 
       </Menu>
 
