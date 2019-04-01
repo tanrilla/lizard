@@ -19,7 +19,7 @@ public class UserController extends AbstractController {
 	private UserService service;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getAllStatus() {
+	public List<User> getAll() {
 		return service.findAll();
 	}
 

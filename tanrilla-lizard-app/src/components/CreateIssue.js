@@ -89,7 +89,9 @@ class CreateIssue extends React.Component {
         },
         assignee: {
           id: this.state.asigneeId
-        }
+        },
+        createdDate: new Date(),
+        modifiedDate: new Date()
       };
       this.props.saveIssue(issue);
       console.log(this.state);
