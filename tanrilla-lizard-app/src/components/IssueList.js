@@ -17,7 +17,7 @@ class IssueList extends React.Component {
 
   renderDropdownOptions (id) { 
     return (
-    <Dropdown>
+    <Dropdown icon='sidebar'>
       <Dropdown.Menu>
         <Dropdown.Item text='Show' description='' onClick={event => this.selectRowAction(id)}/>
         <Dropdown.Item text='Edit' />        
