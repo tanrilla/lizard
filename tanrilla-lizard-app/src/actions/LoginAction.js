@@ -11,7 +11,7 @@ export const login = (username, pwd) => async dispatch => {
     var urlData = `grant_type=password&username=${username}&password=${pwd}&client_id=lizardClientId&client_secret=liazardAppSecret`;
 
     
-    const reponse = await oauthApi.post(`/oauth/token?${urlData}`,{},config).then(async response =>{
+    await oauthApi.post(`/oauth/token?${urlData}`,{},config).then(async response =>{
 
         var id = response.headers.userid;
         var rs = await apiUtil.get(`/user/oauth/${id}`);

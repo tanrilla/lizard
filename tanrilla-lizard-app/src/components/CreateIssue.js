@@ -129,7 +129,7 @@ class CreateIssue extends React.Component {
         return (
             <div>
                 <Menu.Item>
-                    <Modal trigger={<Button primary>Create</Button>}>
+                    <Modal trigger={<Button color="green">Create</Button>}>
                         <Modal.Header>Create issue</Modal.Header>
                         <Modal.Content scrolling>
                             <Modal.Description>
