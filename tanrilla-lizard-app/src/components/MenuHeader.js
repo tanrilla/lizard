@@ -1,10 +1,9 @@
 import React from 'react';
-import { Button, Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import CreateIssue from './CreateIssue';
 
 class MenuHeader extends React.Component {
-
-  state = {};
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -12,7 +11,7 @@ class MenuHeader extends React.Component {
     return (
       <Menu size='mini'>
         <Menu.Item>
-          <img src='/lizard.png' />
+          <img src='/lizard.png' alt="Lizard"/>
         </Menu.Item>
 
         <Menu.Item header
@@ -25,9 +24,7 @@ class MenuHeader extends React.Component {
           </Dropdown.Menu>
         </Dropdown>
 
-        <Menu.Item>
-          <Button color="green">Create</Button>
-        </Menu.Item>
+        <CreateIssue />
 
         <Menu.Menu position='right'>
             <Dropdown item text={window.currentUser.firstName + ' ' + window.currentUser.lastName} image>
@@ -37,6 +34,7 @@ class MenuHeader extends React.Component {
               </Dropdown.Menu>
             </Dropdown>
         </Menu.Menu>
+
       </Menu>
 
     );

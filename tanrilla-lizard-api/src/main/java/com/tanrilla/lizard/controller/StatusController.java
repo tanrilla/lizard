@@ -19,7 +19,7 @@ public class StatusController extends AbstractController {
 	private StatusService service;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Status> getAllStatus(){
+	public List<Status> getAll(){
 		return service.findAll();
 	}
 	

@@ -45,7 +45,7 @@ class IssueDetail extends React.Component {
 
         if(nextProps.statusList){
             let statusListTmp = [];
-            nextProps.statusList.map((st, i) =>{
+            nextProps.statusList.forEach((st, i) => {
                 statusListTmp.push({
                     key: i,
                     text: st.name,
@@ -57,7 +57,7 @@ class IssueDetail extends React.Component {
 
         if(nextProps.userList){
             let userListTmp = [];
-            nextProps.userList.map((u, i) =>{
+            nextProps.userList.forEach((u, i) => {
                 userListTmp.push({
                     key: i,
                     text: u.firstName,
@@ -285,7 +285,7 @@ class IssueDetail extends React.Component {
                                             onBlur={event => this.saveAssignee()}/>
                                 :
                                     <Label as='a' onClick={event => this.editAssignee()} image>
-                                        <img src='http://virtual-strategy.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' />
+                                        <img src='http://virtual-strategy.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png' alt=""/>
                                         {this.state.assignee}
                                     </Label>
                             }

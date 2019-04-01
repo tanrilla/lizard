@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import { login } from '../../actions/LoginAction';
 import MenuHeader from '../MenuHeader';
@@ -69,7 +70,7 @@ class Login extends React.Component {
                   </Segment>
                 </Form>
                 <Message>
-                  New to us? <a href='#'>Sign Up</a>
+                  New to us? Sign Up
                 </Message>
               </Grid.Column>
             </Grid>
@@ -81,10 +82,12 @@ class Login extends React.Component {
     renderLogin() {
       if(this.props.isLoggedIn){
         return (
-          <div>
-            <MenuHeader />
-            <Main/>
-          </div>
+          <BrowserRouter>
+            <div>
+              <MenuHeader />
+              <Main/>
+            </div>
+          </BrowserRouter>
           );
       }
       return this.LoginForm();

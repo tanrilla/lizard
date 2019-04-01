@@ -1,13 +1,13 @@
 import React from 'react';
-import { Table, Icon, Dropdown } from 'semantic-ui-react';
+import { Table, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue, clearState } from '../actions/IssueAction';
-import { runInThisContext } from 'vm';
 
 class IssueList extends React.Component {
 
   componentDidMount () {
     this.props.getIssues();
+    document.title = "Issues";
   }
 
   selectRowAction = (id) => {
@@ -17,7 +17,7 @@ class IssueList extends React.Component {
 
   renderDropdownOptions (id) { 
     return (
-    <Dropdown>
+    <Dropdown icon='sidebar'>
       <Dropdown.Menu>
         <Dropdown.Item text='Show' description='' onClick={event => this.selectRowAction(id)}/>
         <Dropdown.Item text='Edit' />        

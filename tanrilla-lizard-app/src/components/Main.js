@@ -4,14 +4,14 @@ import Home from './Home';
 import IssueList from './IssueList';
 import IssueDetail from './IssueDetail';
 
-const Main = () => (
-  <main>
+const Main = () => {
+  return (
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path='/issue-list' component={IssueList}/>
       <Route path='/issue-detail/:issueId' component={IssueDetail}/>
     </Switch>
-  </main>
-)
+  );
+};
 
 export default Main

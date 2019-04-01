@@ -23,17 +23,17 @@ public class CommentController extends AbstractController{
 	private CommentService service;
 	
 	@GetMapping(path="/{issueId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Comment> getCommnetByIssue(@PathVariable Long issueId){
+	public List<Comment> getByIssue(@PathVariable Long issueId){
 		return service.findByIssueId(issueId);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Comment saveComment(@RequestBody Comment comment){
+	public Comment save(@RequestBody Comment comment){
 		return service.create(comment);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Comment updateComment(@RequestBody Comment comment){
+	public Comment update(@RequestBody Comment comment){
 		return service.update(comment);
 	}
 }
