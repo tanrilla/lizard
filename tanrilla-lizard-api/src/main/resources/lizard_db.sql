@@ -35,7 +35,7 @@ CREATE TABLE `comment` (
   KEY `issueId` (`issueId`),
   KEY `createdBy` (`createdBy`),
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`issueId`) REFERENCES `issue` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (19,'{\"blocks\":[{\"key\":\"a04ds\",\"text\":\"demo1\",\"type\":\"blockquote\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":5,\"style\":\"BOLD\"},{\"offset\":0,\"length\":5,\"style\":\"ITALIC\"},{\"offset\":0,\"length\":5,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',13,NULL,NULL,1),(20,'{\"blocks\":[{\"key\":\"bocte\",\"text\":\"Peru 2021\",\"type\":\"header-two\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":9,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',13,NULL,NULL,1),(21,'{\"blocks\":[{\"key\":\"dat0s\",\"text\":\"Ricardo Figueroa Cesar Kina \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":16,\"key\":0},{\"offset\":17,\"length\":10,\"key\":1}],\"data\":{}},{\"key\":\"80dbk\",\"text\":\"Hi, please review this issue.\",\"type\":\"header-five\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"fmk9j\",\"text\":\"Regards\",\"type\":\"header-five\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"bvjjn\",\"text\":\"Juan\",\"type\":\"header-five\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{\"0\":{\"type\":\"mention\",\"mutability\":\"SEGMENTED\",\"data\":{\"mention\":{\"name\":\"Ricardo Figueroa\",\"link\":\"https://twitter.com/mrussell247\",\"avatar\":\"https://media.licdn.com/dms/image/C4D03AQGZ_tE8xE863Q/profile-displayphoto-shrink_100_100/0?e=1559174400&v=beta&t=kyPbfWcy631ypKOCmqsTku9_jlqJ1V1d9thKMfgateI\"}}},\"1\":{\"type\":\"mention\",\"mutability\":\"SEGMENTED\",\"data\":{\"mention\":{\"name\":\"Cesar Kina\",\"link\":\"https://twitter.com/juliandoesstuff\",\"avatar\":\"https://media.licdn.com/dms/image/C4D03AQGXtklNLc6j7g/profile-displayphoto-shrink_800_800/0?e=1559174400&v=beta&t=yFqoZs-pUrKIANpBDmTkTkHOGgJRYtUCDwScHmp603w\"}}}}}',13,NULL,NULL,1),(22,'{\"blocks\":[{\"key\":\"4ktq6\",\"text\":\"Comment 1!!\",\"type\":\"blockquote\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":11,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',12,NULL,NULL,1),(23,'{\"blocks\":[{\"key\":\"cjbn6\",\"text\":\"Peru 2021\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":9,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',17,NULL,NULL,1),(24,'{\"blocks\":[{\"key\":\"f3p3p\",\"text\":\"Ricardo Figueroa Demo!!!\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',15,NULL,NULL,1),(25,'{\"blocks\":[{\"key\":\"60jal\",\"text\":\"Hi All, We are reviewing this issue.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":36,\"style\":\"ITALIC\"},{\"offset\":0,\"length\":36,\"style\":\"CODE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',14,NULL,NULL,1),(26,'{\"blocks\":[{\"key\":\"ah2g4\",\"text\":\"Ricardo\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',12,NULL,NULL,1);
+INSERT INTO `comment` VALUES (19,'{\"blocks\":[{\"key\":\"a04ds\",\"text\":\"demo1\",\"type\":\"blockquote\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":5,\"style\":\"BOLD\"},{\"offset\":0,\"length\":5,\"style\":\"ITALIC\"},{\"offset\":0,\"length\":5,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',13,NULL,NULL,1),(20,'{\"blocks\":[{\"key\":\"bocte\",\"text\":\"Peru 2021\",\"type\":\"header-two\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":9,\"style\":\"UNDERLINE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',13,NULL,NULL,1),(21,'{\"blocks\":[{\"key\":\"dat0s\",\"text\":\"Ricardo Figueroa Cesar Kina \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":16,\"key\":0},{\"offset\":17,\"length\":10,\"key\":1}],\"data\":{}},{\"key\":\"80dbk\",\"text\":\"Hi, please review this issue.\",\"type\":\"header-five\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"fmk9j\",\"text\":\"Regards\",\"type\":\"header-five\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"bvjjn\",\"text\":\"Juan\",\"type\":\"header-five\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{\"0\":{\"type\":\"mention\",\"mutability\":\"SEGMENTED\",\"data\":{\"mention\":{\"name\":\"Ricardo Figueroa\",\"link\":\"https://twitter.com/mrussell247\",\"avatar\":\"https://media.licdn.com/dms/image/C4D03AQGZ_tE8xE863Q/profile-displayphoto-shrink_100_100/0?e=1559174400&v=beta&t=kyPbfWcy631ypKOCmqsTku9_jlqJ1V1d9thKMfgateI\"}}},\"1\":{\"type\":\"mention\",\"mutability\":\"SEGMENTED\",\"data\":{\"mention\":{\"name\":\"Cesar Kina\",\"link\":\"https://twitter.com/juliandoesstuff\",\"avatar\":\"https://media.licdn.com/dms/image/C4D03AQGXtklNLc6j7g/profile-displayphoto-shrink_800_800/0?e=1559174400&v=beta&t=yFqoZs-pUrKIANpBDmTkTkHOGgJRYtUCDwScHmp603w\"}}}}}',13,NULL,NULL,1),(22,'{\"blocks\":[{\"key\":\"4ktq6\",\"text\":\"Comment 1!!\",\"type\":\"blockquote\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":11,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',12,NULL,NULL,1),(23,'{\"blocks\":[{\"key\":\"cjbn6\",\"text\":\"Peru 2021\",\"type\":\"ordered-list-item\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":9,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',17,NULL,NULL,1),(24,'{\"blocks\":[{\"key\":\"f3p3p\",\"text\":\"Ricardo Figueroa Demo!!!\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',15,NULL,NULL,1),(25,'{\"blocks\":[{\"key\":\"60jal\",\"text\":\"Hi All, We are reviewing this issue.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":36,\"style\":\"ITALIC\"},{\"offset\":0,\"length\":36,\"style\":\"CODE\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',14,NULL,NULL,1),(26,'{\"blocks\":[{\"key\":\"ah2g4\",\"text\":\"Ricardo\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',12,NULL,NULL,1),(27,'{\"blocks\":[{\"key\":\"9mpkp\",\"text\":\"Peru\",\"type\":\"header-one\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',12,NULL,NULL,1),(28,'{\"blocks\":[{\"key\":\"526f2\",\"text\":\"demo\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}',14,NULL,NULL,1);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,8 +177,9 @@ CREATE TABLE `project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL DEFAULT '',
   `shortName` varchar(10) NOT NULL DEFAULT '',
+  `createdBy` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +188,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'Lizard','LIZ');
+INSERT INTO `project` VALUES (1,'Lizard','LIZ',1),(2,'Lizard - Richi','LIZ',2);
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,4 +277,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-01 13:46:28
+-- Dump completed on 2019-04-01 15:50:14
