@@ -12,12 +12,9 @@ export const saveIssue = (issue) => dispatch => {
     var config = {
         headers: {'Content-Type': 'application/json'}
       };
+
     apiUtil.post("/issue", issue, config).then(async () => {
-        const reponse = await apiUtil.get("/issue");
-        dispatch({
-            type: 'GET_ISSUES',
-            payload: reponse.data
-        });
+        await dispatch(getIssues());
     });
 
 };
