@@ -57,5 +57,10 @@ public class IssueServiceImpl implements IssueService {
 		return repository.save(issuePrev);
 	}
 
+	@Override
+	public List<Issue> findByProjectId(Long projectId) {		
+		return repository.findByProjectId(projectId);
+	}
+
 }
 

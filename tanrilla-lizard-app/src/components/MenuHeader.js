@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropdown, Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import CreateIssue from './CreateIssue';
-
+import CreateProject from './CreateProject';
 class MenuHeader extends React.Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -18,6 +18,9 @@ class MenuHeader extends React.Component {
           content='LIZARD'
           as={Link} to='/'
         />
+
+        <CreateProject />
+        
         <Dropdown item text='Issues'>
           <Dropdown.Menu>
             <Dropdown.Item as={Link} to='/issue-list'>Search for issues</Dropdown.Item>
