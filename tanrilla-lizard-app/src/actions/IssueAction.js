@@ -89,3 +89,11 @@ export const updateIssueFields = (issueId, issue) =>async dispatch => {
     dispatch({type: 'GET_ISSUE', payload: reponse.data});
 
 };
+
+export const getIssuesByProject = (projectId) => async dispatch => {
+    const reponse = await apiUtil.get(`/issue/project/${projectId}`);
+    dispatch({
+        type: 'GET_ISSUES',
+        payload: reponse.data
+    });
+};

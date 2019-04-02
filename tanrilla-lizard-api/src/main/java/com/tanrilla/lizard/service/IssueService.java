@@ -17,4 +17,6 @@ public interface IssueService {
 	
 	Issue updateByField(Long id, Issue issue);
 
+	List<Issue> findByProjectId(Long projectId);
+
 }

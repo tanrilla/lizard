@@ -1,12 +1,21 @@
 import React from 'react';
 import { Table, Dropdown } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue, clearState } from '../actions/IssueAction';
+import { getIssues, saveIssue, deleteIssue, getIssue, updateIssue, clearState, getIssuesByProject } from '../actions/IssueAction';
 
 class IssueList extends React.Component {
 
   componentDidMount () {
-    this.props.getIssues();
+
+    const { match: { params } } = this.props;
+    console.log(params.projectId);
+    if(params.projectId){
+      this.props.getIssuesByProject(params.projectId);
+    }else {
+      this.props.getIssues();
+    }
+   
+
     document.title = "Issues";
   }
 
@@ -83,7 +92,8 @@ const actions = {
   deleteIssue, 
   getIssue, 
   updateIssue,
-  clearState
+  clearState,
+  getIssuesByProject
 };
 
 export default connect(mapStateToProps,actions)(IssueList);
