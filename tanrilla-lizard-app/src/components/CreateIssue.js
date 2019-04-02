@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { saveIssue } from '../actions/IssueAction';
 import { getProjectList, getTypeList, getPriorityList, getUsers } from '../actions/CommonAction';
 import { Button, Modal, Menu, Form } from 'semantic-ui-react';
+import { DateInput } from 'semantic-ui-calendar-react';
 
 class CreateIssue extends React.Component {
 
@@ -151,8 +152,8 @@ class CreateIssue extends React.Component {
       this.setState({asigneeId: data.value});
     }
 
-    onChangeDueDate = (event) => {
-      this.setState({dueDate: event.target.value});
+    onChangeDueDate = (event, {value}) => {
+      this.setState({dueDate: value});
     }
 
     render() {
@@ -174,7 +175,7 @@ class CreateIssue extends React.Component {
                                     <Form.TextArea label='Description' value={this.state.description} onChange={this.onChangeDescription} />
                                     <Form.Dropdown label="Priority" placeholder='Select priority' fluid selection options={this.state.priorities} value={this.state.priorityId} onChange={this.onChangePriority} />
                                     <Form.Dropdown label="Asignee" placeholder='Select asignee' fluid selection options={this.state.users} value={this.state.asigneeId} onChange={this.onChangeAsignee} />
-                                    <Form.Input label="Due date" value={this.state.dueDate} onChange={this.onChangeDueDate} placeholder="YYYY-MM-DD" />
+                                    <DateInput closable label="Due date" name="date" placeholder="Date" value={this.state.dueDate} iconPosition="left" onChange={this.onChangeDueDate} dateFormat="YYYY-MM-DD" />
                                 </Form>
                             </Modal.Description>
                         </Modal.Content>
