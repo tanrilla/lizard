@@ -42,4 +42,8 @@ public class IssueController extends AbstractController {
 		return service.updateByField(id, issue);
 	}
 	
+	@GetMapping(path="/project/{projectId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Issue> getIssuesByProjectId(@PathVariable Long projectId){
+		return service.findByProjectId(projectId);
+	}
 }

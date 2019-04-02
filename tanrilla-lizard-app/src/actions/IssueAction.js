@@ -13,7 +13,7 @@ export const saveIssue = (issue) => dispatch => {
         headers: {'Content-Type': 'application/json'}
       };
     apiUtil.post("/issue", issue, config).then(async () => {
-        const reponse = await apiUtil.get("/issue");
+        const reponse = await apiUtil.get("/issue/getAll");
         dispatch({
             type: 'GET_ISSUES',
             payload: reponse.data
@@ -91,4 +91,12 @@ export const updateIssueFields = (issueId, issue) =>async dispatch => {
     const reponse = await apiUtil.patch(`/issue/${issueId}`, issue, config);
     dispatch({type: 'GET_ISSUE', payload: reponse.data});
 
+};
+
+export const getIssuesByProject = (projectId) => async dispatch => {
+    const reponse = await apiUtil.get(`/issue/project/${projectId}`);
+    dispatch({
+        type: 'GET_ISSUES',
+        payload: reponse.data
+    });
 };
