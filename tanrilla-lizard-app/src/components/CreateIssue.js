@@ -18,7 +18,8 @@ class CreateIssue extends React.Component {
       priorityId: null,
       asigneeId: null,
       dueDate: '',
-      statusId: 1
+      statusId: 1,
+      modalOpen: false
     }
     
     componentDidMount() {
@@ -82,6 +83,22 @@ class CreateIssue extends React.Component {
     }
 
     /** Actions */
+    handleOpen = () => this.setState({ modalOpen: true });
+
+    handleClose = () => this.setState({ modalOpen: false });
+
+    clearState = () => {
+      this.setState({
+        projectId: null,
+        typeId: null,
+        summary: '',
+        description: '',
+        priorityId: null,
+        asigneeId: null,
+        dueDate: ''
+      });
+    }
+
     saveIssue () {
       let issue = {
         summary: this.state.summary,
@@ -106,7 +123,8 @@ class CreateIssue extends React.Component {
         modifiedDate: new Date()
       };
       this.props.saveIssue(issue);
-      console.log(this.state);
+      this.handleClose();
+      this.clearState();
     }
 
     onChangeProject = (event, data) => {
@@ -141,7 +159,11 @@ class CreateIssue extends React.Component {
         return (
             <div>
                 <Menu.Item>
-                    <Modal trigger={<Button primary>Create</Button>}>
+                    <Modal
+                      trigger={<Button primary onClick={this.handleOpen}>Create</Button>}
+                      open={this.state.modalOpen}
+                      onClose={this.handleClose}
+                      >
                         <Modal.Header>Create issue</Modal.Header>
                         <Modal.Content scrolling>
                             <Modal.Description>
