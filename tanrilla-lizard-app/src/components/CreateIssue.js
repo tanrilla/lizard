@@ -86,7 +86,10 @@ class CreateIssue extends React.Component {
     /** Actions */
     handleOpen = () => this.setState({ modalOpen: true });
 
-    handleClose = () => this.setState({ modalOpen: false });
+    handleClose = () => {
+      this.setState({ modalOpen: false });
+      this.clearState();
+    };
 
     clearState = () => {
       this.setState({
@@ -125,7 +128,6 @@ class CreateIssue extends React.Component {
       };
       this.props.saveIssue(issue);
       this.handleClose();
-      this.clearState();
     }
 
     onChangeProject = (event, data) => {
