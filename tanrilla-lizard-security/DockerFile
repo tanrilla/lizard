@@ -1,0 +1,5 @@
+FROM java:8
+EXPOSE 9081
+COPY ./target/tanrilla-lizard-security-1.0-SNAPSHOT.jar /usr/src/app/
+WORKDIR /usr/src/app
+CMD ["java", "-Dspring.profiles.active=prod", "-jar", "tanrilla-lizard-security-1.0-SNAPSHOT.jar"]
